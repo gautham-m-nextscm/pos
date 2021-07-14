@@ -1,11 +1,14 @@
 package com.shubham.increff.pojo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 @Entity
 public class InventoryPojo {
     @Id
+    @Column(name = "id")
     private int id;
+    @Column(name = "quantity")
     private int quantity;
 
     public int getId() {

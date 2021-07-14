@@ -1,17 +1,21 @@
 package com.shubham.increff.pojo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(
+        uniqueConstraints = {@UniqueConstraint(columnNames = {"brand", "category"})}
+)
 public class BrandCategoryPojo {
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
+    @Column(name = "brand")
     private String brand;
+    @Column(name = "category")
     private String category;
+
 
     public int getId() {
         return id;

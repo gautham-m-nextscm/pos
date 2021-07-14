@@ -1,20 +1,9 @@
-package com.shubham.increff.pojo;
+package com.shubham.increff.model;
 
-import javax.persistence.*;
-
-@Entity
-public class ProductPojo {
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int id;
-    @Column(name = "barcode")
+public class ProductForm {
     private String barcode;
-    @Column(name = "brand_category")
     private int brand_category;
-    @Column(name = "name")
     private String name;
-    @Column(name = "mrp")
     private double mrp;
 
     public int getBrand_category() {
@@ -25,14 +14,6 @@ public class ProductPojo {
         this.brand_category = brand_category;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getBarcode() {
         return barcode;
     }
@@ -40,8 +21,6 @@ public class ProductPojo {
     public void setBarcode(String barcode) {
         this.barcode = barcode;
     }
-
-
 
     public String getName() {
         return name;
@@ -58,7 +37,6 @@ public class ProductPojo {
     public void setMrp(double mrp) {
         this.mrp = mrp;
     }
-
 
 
 }
