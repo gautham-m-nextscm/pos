@@ -50,7 +50,14 @@ public class ProductService {
         }
         return p;
     }
-//
+
+    @Transactional
+    public int getProductIdByBarcode(String barcode)
+    {
+        return dao.getProductIdByBarcode(barcode);
+    }
+
+
     protected static void normalize(ProductPojo p) {
         p.setName(p.getName().toLowerCase().trim());
         p.setBarcode(p.getBarcode().toLowerCase().trim());

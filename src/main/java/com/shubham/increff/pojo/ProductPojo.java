@@ -17,6 +17,12 @@ public class ProductPojo {
     @Column(name = "mrp")
     private double mrp;
 
+
+//    @OneToOne
+//    @MapsId
+//    @JoinColumn(name = "brand_category")
+//    private BrandCategoryPojo brandCategoryPojo;
+
     public int getBrand_category() {
         return brand_category;
     }

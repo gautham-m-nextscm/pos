@@ -15,7 +15,15 @@ public class OrderItemPojo {
     private int orderId;
     private int productId;
     private int quantity;
-    private int sellingPrice;
+    private double sellingPrice;
+
+    public double getSellingPrice() {
+        return sellingPrice;
+    }
+
+    public void setSellingPrice(double sellingPrice) {
+        this.sellingPrice = sellingPrice;
+    }
 
     public int getId() {
         return id;
@@ -47,14 +55,6 @@ public class OrderItemPojo {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    public int getSellingPrice() {
-        return sellingPrice;
-    }
-
-    public void setSellingPrice(int sellingPrice) {
-        this.sellingPrice = sellingPrice;
     }
 
 

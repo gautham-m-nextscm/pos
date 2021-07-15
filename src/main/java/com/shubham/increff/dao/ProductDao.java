@@ -15,7 +15,7 @@ public class ProductDao {
 
     private static String select_id = "select p from ProductPojo p where id=:id";
     private static String select_all = "select p from ProductPojo p";
-
+    private static String select_barcode = "select p from ProductPojo p where barcode=:barcode";
     @PersistenceContext
     private EntityManager em;
 
@@ -38,6 +38,12 @@ public class ProductDao {
     public void update(ProductPojo p) {
     }
 
+    public int getProductIdByBarcode(String barcode)
+    {
+        TypedQuery<ProductPojo> query = getQuery(select_barcode);
+        query.setParameter("barcode", barcode);
+        return query.getSingleResult().getId();
+    }
 
     TypedQuery<ProductPojo> getQuery(String jpql) {
         return em.createQuery(jpql, ProductPojo.class);

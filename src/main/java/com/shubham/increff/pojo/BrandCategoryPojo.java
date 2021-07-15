@@ -16,6 +16,9 @@ public class BrandCategoryPojo {
     @Column(name = "category")
     private String category;
 
+//    @OneToOne
+//    @PrimaryKeyJoinColumn
+//    private ProductPojo productPojo;
 
     public int getId() {
         return id;
