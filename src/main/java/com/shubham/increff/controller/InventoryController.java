@@ -1,5 +1,6 @@
 package com.shubham.increff.controller;
 
+import com.shubham.increff.Dto.InventoryDto;
 import com.shubham.increff.model.InventoryData;
 import com.shubham.increff.model.InventoryForm;
 import com.shubham.increff.pojo.InventoryPojo;
@@ -18,50 +19,30 @@ import java.util.List;
 @RestController
 public class InventoryController {
     @Autowired
-    private InventoryService service;
+    private InventoryDto dto;
 
     @ApiOperation(value = "Add Inventory")
     @RequestMapping(path = "/api/inventory", method = RequestMethod.POST)
-    public void add(@RequestBody InventoryPojo p) {
-        service.add(p);
+    public void add(@RequestBody InventoryPojo inventoryPojo) {
+        dto.add(inventoryPojo);
     }
 
     @ApiOperation(value = "Gets list of all available inventory")
     @RequestMapping(path = "/api/inventory", method = RequestMethod.GET)
-    public List<InventoryData> getAll() {
-        List<InventoryPojo> list = service.getAll();
-        List<InventoryData> list2 = new ArrayList<InventoryData>();
-        for (InventoryPojo p : list) {
-            list2.add(convert(p));
-        }
-        return list2;
+    public List<InventoryData> getAll() throws ApiException {
+        return dto.getAll();
     }
 
     @ApiOperation(value = "Gets Inventory by Product ID")
     @RequestMapping(path = "/api/inventory/{id}", method = RequestMethod.GET)
     public InventoryData get(@PathVariable int id) throws ApiException {
-        InventoryPojo p = service.get(id);
-        return convert(p);
+        return dto.get(id);
     }
 
     @ApiOperation(value = "Updates  Brand and Category")
     @RequestMapping(path = "/api/inventory/{id}", method = RequestMethod.PUT)
-    public void update(@PathVariable int id, @RequestBody InventoryForm f) throws ApiException {
-        InventoryPojo p = convert(f);
-        service.update(id, p);
-    }
-
-    private static InventoryData convert(InventoryPojo p) {
-        InventoryData d = new InventoryData();
-        d.setQuantity(p.getQuantity());
-        d.setId(p.getId());
-        return d;
-    }
-
-    private static InventoryPojo convert(InventoryForm f) {
-        InventoryPojo p = new InventoryPojo();
-        p.setQuantity(f.getQuantity());
-        return p;
+    public void update(@PathVariable int id, @RequestBody InventoryForm inventoryForm) throws ApiException {
+        dto.update(id, inventoryForm);
     }
 
 }
